@@ -14,12 +14,18 @@
 	const hooks = await app.require('hooks');
 
 	hooks.on('action:app.load', () => {
-		// called once when nbb has loaded
+		// console.log('hello world on start');
 	});
 
 	hooks.on('action:ajaxify.end', (/* data */) => {
-		// called everytime user navigates between pages including first load
+		// console.log('hello world 2222');
 	});
+
+	hooks.on('action:composer.topic.new', () => {
+		setTimeout(() => {
+			$('.composer .title').val('Nowy post');
+		}, 100);
+	})
 })();
 
 /**

@@ -7,6 +7,8 @@ const meta = require.main.require('./src/meta');
 
 const controllers = require('./lib/controllers');
 
+const sanitize = require('./sanitize');
+
 const routeHelpers = require.main.require('./src/routes/helpers');
 
 const plugin = {};
@@ -84,5 +86,44 @@ plugin.addAdminNavigation = (header) => {
 
 	return header;
 };
+
+
+
+// auto-create topic
+plugin.onTopicCreate = async function (data) {
+
+  console.log("Debugger babuni")
+  console.log(data)
+
+  const content = data.data.content;
+  if (!content) {
+    data.topic.title = 'Nowy post';
+    return data;
+  }
+
+  let result = sanitize(content);
+  let titleCandidate = '';
+  if (result.text) 
+  {
+    titleCandidate = result.text;
+  } 
+  else if (result.images && result.images.length > 0) 
+  {
+	result = sanitize(result.images[0]);
+	titleCandidate = result.text;
+  } 
+  else 
+  {
+	data.topic.title = 'Nowy post';
+	return data;
+  }
+
+  data.topic.title = titleCandidate.slice(0, 80) + (titleCandidate.length > 80 ? '...' : '');
+  let id = data.topic.slug.split('/')[0];
+  data.topic.slug = id + "/" + data.topic.title.replace(/\s+/g, '-').toLowerCase();
+
+  return data;
+};
+
 
 module.exports = plugin;
