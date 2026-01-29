@@ -10,7 +10,7 @@ Really simple, just edit `public/lib/main.js` and paste in `console.log('hello w
 
 ## Installation
 
-    npm install nodebb-plugin-quickstart
+    npm install nodebb-plugin-zakop
 
 ## Screenshots
 

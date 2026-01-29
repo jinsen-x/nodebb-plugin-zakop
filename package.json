@@ -1,11 +1,11 @@
 {
-  "name": "nodebb-plugin-quickstart",
-  "version": "0.4.3",
-  "description": "A starter kit for quickly creating NodeBB plugins",
+  "name": "nodebb-plugin-zakop",
+  "version": "0.1.0",
+  "description": "Zakop plugin",
   "main": "library.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nodebb/nodebb-plugin-quickstart"
+    "url": "https://github.com/jinsen-x/nodebb-plugin-zakop"
   },
   "scripts": {
     "lint": "eslint ."
@@ -30,7 +30,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nodebb/nodebb-plugin-quickstart/issues"
+    "url": "https://github.com/jinsen-x/nodebb-plugin-zakop/issues"
   },
   "readmeFilename": "README.md",
   "nbbpm": {
